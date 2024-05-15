@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import routesProducto from '../routes/product';
+import routesAuto from '../routes/auto';
 import db from '../db/connection';
 import cors from 'cors';
 
@@ -33,7 +33,7 @@ class Server {
                 msg: 'Api working'
             })
         });
-        this.app.use('/api/products', routesProducto);
+        this.app.use('/api/autos', routesAuto);
     }
 
     middlewares() {
