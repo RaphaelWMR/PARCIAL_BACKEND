@@ -1,0 +1,6 @@
+express
+dotenv
+cors
+sequelize
+mysql2
+--save-dev @types/express
