@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import routesProducto from '../routes/product';
+import db from '../db/connection';
 import cors from 'cors';
 
 // Enviroment variables
@@ -17,6 +18,7 @@ class Server {
         this.listen();
         this.middlewares();
         this.routes();
+        this.dbConnect();
     }
 
     listen() {
@@ -40,6 +42,15 @@ class Server {
         // Cors
         this.app.use(cors());
 
+    }
+
+    async dbConnect() {
+        try {
+            await db.authenticate();
+            console.log('Connection has been established successfully.');
+        } catch (error) {
+            console.error('Unable to connect to the database:', error);
+        }
     }
 }
 
